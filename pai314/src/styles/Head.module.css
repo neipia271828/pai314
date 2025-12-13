@@ -1,0 +1,31 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  /* 中身の要素を横並びにする */
+  display: flex;
+
+  /* ロゴ と ナビの中心線を揃える */
+  align-items: center;
+}
+
+.left {
+  width: 20%;
+}
+
+.center {
+  font-size: large;
+}
+
+.center nav {
+  /* この２つはセット */
+  display: flex;
+  gap: 24px;
+  /* この２つはセット */
+}
+
+.right {
+  width: 20%;
+}
