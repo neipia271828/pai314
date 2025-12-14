@@ -6,7 +6,7 @@ function Me() {
         <>
             <img className={styles.img} src={profileImage} alt="profile" />
             <h1>Pai314</h1>
-            <p>Hello! My name is π</p>
+            <p>Hello! My name is π!</p>
         </>
     )
 }
