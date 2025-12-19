@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom"
-import styles from "../styles/Head.module.css"
+import styles from "../styles/Header.module.css"
 
-function Header() {
+type Props = {
+  currentPage: string;
+}
+
+function Header(props: Props) {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <h1>Pai314</h1>
+        <h1>{props.currentPage}</h1>
       </div>
 
       <div className={styles.center}>
@@ -14,7 +18,7 @@ function Header() {
           <Link to="/about">About</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/articles">Articles</Link>
-          <Link to="/Contact">Contact/Links</Link>
+          <Link to="/links">Links</Link>
         </nav>
       </div>
 

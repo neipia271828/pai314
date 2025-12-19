@@ -1,13 +1,13 @@
-import Header from "../components/Head"
+import Header from "../components/Header"
 import Me from "../components/Me"
-import Contact from "../components/Contact"
+import Link from "../components/Link"
 
 function Home() {
     return (
         <>
-            <Header />
+            <Header currentPage="Pai314" />
             <Me />
-            <Contact />
+            <Link />
         </>
     )
 }

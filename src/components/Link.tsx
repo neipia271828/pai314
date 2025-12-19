@@ -1,6 +1,6 @@
 import styles from "../styles/Contact.module.css"
 
-function Contact() {
+function Link() {
     const xAccount:string = "https://x.com/pi314_grothen57";
     const instagramAccount:string = "https://www.instagram.com/pai314_paisanitiyon/";
     const noteAccount:string = "https://note.com/boom3037";
@@ -10,7 +10,7 @@ function Contact() {
 
     return (
         <>
-            <h2 className={styles.h2}>Contact/SNS</h2>
+            <h2 className={styles.h2}>Links</h2>
             <div className={styles.text}>
                 <p><a href={xAccount}>x</a></p>
                 <p><a href={instagramAccount}>instagram</a></p>
@@ -23,4 +23,4 @@ function Contact() {
     )
 }
 
-export default Contact
+export default Link
