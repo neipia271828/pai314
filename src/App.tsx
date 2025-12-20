@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Articles from "./pages/Articles";
 import Links from "./pages/Links";
+import Article from "./pages/Article"
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/links" element={<Links />} />
+        <Route path="/articles/:id" element={<Article />} />
       </Routes>
     </BrowserRouter>
   )
