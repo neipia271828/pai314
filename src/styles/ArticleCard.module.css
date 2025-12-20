@@ -1,0 +1,28 @@
+.card {
+    display: block;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin: 0 0 8px;
+}
+
+.card time {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.card p {
+    margin-top: 8px;
+    color: #444;
+}
