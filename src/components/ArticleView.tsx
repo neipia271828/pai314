@@ -12,7 +12,7 @@ function ArticleView({ articleId }: Props) {
     useEffect(() => {
         setLoading(true);
 
-        fetch(`/articles/${articleId}.md`)
+        fetch(`${import.meta.env.BASE_URL}articles/${articleId}.md`)
         .then(res => {
             if (!res.ok) {
             throw new Error("記事が見つかりません");
