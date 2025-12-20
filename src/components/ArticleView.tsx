@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 type Props = {
-articleId: string;
+    articleId: string;
 };
 
 function ArticleView({ articleId }: Props) {
@@ -15,19 +15,24 @@ function ArticleView({ articleId }: Props) {
         fetch(`/articles/${articleId}.md`)
         .then(res => {
             if (!res.ok) {
-                throw new Error("記事が見つかりません");
+            throw new Error("記事が見つかりません");
             }
             return res.text();
         })
-        .then(text => setContent(text))
-        .catch(() => setContent("# 記事が見つかりません"))
-        .finally(() => setLoading(false));
+        .then(text => {
+            // frontmatter を単純に削除
+            const body = text.replace(/^---[\s\S]*?---/, "").trim();
+            setContent(body);
+        })
+        .catch(() => {
+            setContent("# 記事が見つかりません");
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+    }, [articleId]);
 
-    }, [articleId]); // ← ここ超重要
-
-    if (loading) {
-        return <p>読み込み中...</p>;
-    }
+    if (loading) return <p>読み込み中...</p>;
 
     return (
         <article>
