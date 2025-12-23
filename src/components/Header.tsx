@@ -14,11 +14,40 @@ function Header(props: Props) {
 
       <div className={styles.center}>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/articles">Articles</Link>
-          <Link to="/links">Links</Link>
+          <Link to="/">
+          <div className={styles.headerelement}>
+            <div className={styles.icons}><span className="material-icons">home</span></div>
+            Home
+          </div>
+          </Link>
+
+          <Link to="/about">
+          <div className={styles.headerelement}>
+            <div className={styles.icons}><span className="material-icons">person</span></div>
+            About
+          </div>
+          </Link>
+
+          <Link to="/projects">
+          <div className={styles.headerelement}>
+            <div className={styles.icons}><span className="material-icons">note</span></div>
+            Projects
+          </div>
+          </Link>
+
+          <Link to="/articles">
+          <div className={styles.headerelement}>
+            <div className={styles.icons}><span className="material-icons">article</span></div>
+            Articles
+          </div>
+          </Link>
+
+          <Link to="/links">
+          <div className={styles.headerelement}>
+            <div className={styles.icons}><span className="material-icons">link</span></div>
+            Links
+          </div>
+          </Link>
         </nav>
       </div>
 

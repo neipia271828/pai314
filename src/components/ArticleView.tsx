@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import style from "../styles/ArticleView.module.css";
 
 type Props = {
     articleId: string;
@@ -35,7 +36,7 @@ function ArticleView({ articleId }: Props) {
     if (loading) return <p>読み込み中...</p>;
 
     return (
-        <article>
+        <article className={style.article}>
         <ReactMarkdown>{content}</ReactMarkdown>
         </article>
     );

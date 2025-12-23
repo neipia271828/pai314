@@ -1,4 +1,4 @@
-import styles from "../styles/Contact.module.css"
+import styles from "../styles/Link.module.css"
 
 function Link() {
     const xAccount:string = "https://x.com/pi314_grothen57";
