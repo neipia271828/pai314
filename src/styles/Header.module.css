@@ -1,18 +1,26 @@
-.header {
+.header,
+.headerTransparent {
   position: fixed;
   width: 100vw;
   height: 9vw;
   top: 0;
   left: 0;
+  z-index: 10;
 
   /* 中身の要素を横並びにする */
   display: flex;
 
   /* ロゴ と ナビの中心線を揃える */
   align-items: center;
+}
 
+.header {
   /* 背景より少し明るくする。*/
   background-color: #2F2F2F;
+}
+
+.headerTransparent {
+  background-color: transparent;
 }
 .headerelement {
   display: flex;
@@ -20,6 +28,7 @@
 
   font-size: 15px;
 }
+
 .icons {
   display: inline-flex;
   align-items: center;

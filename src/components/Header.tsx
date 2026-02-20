@@ -3,11 +3,12 @@ import styles from "../styles/Header.module.css"
 
 type Props = {
   currentPage: string;
+  transparent?: boolean;
 }
 
 function Header(props: Props) {
   return (
-    <header className={styles.header}>
+    <header className={props.transparent ? styles.headerTransparent : styles.header}>
       <div className={styles.left}>
         <h1>{props.currentPage}</h1>
       </div>
@@ -16,35 +17,45 @@ function Header(props: Props) {
         <nav>
           <Link to="/">
           <div className={styles.headerelement}>
-            <div className={styles.icons}><span className="material-icons">home</span></div>
+            <div className={styles.icons}>
+              <span className="material-icons">home</span>
+            </div>
             Home
           </div>
           </Link>
 
           <Link to="/about">
           <div className={styles.headerelement}>
-            <div className={styles.icons}><span className="material-icons">person</span></div>
+            <div className={styles.icons}>
+              <span className="material-icons">person</span>
+            </div>
             About
           </div>
           </Link>
 
           <Link to="/projects">
           <div className={styles.headerelement}>
-            <div className={styles.icons}><span className="material-icons">note</span></div>
+            <div className={styles.icons}>
+              <span className="material-icons">note</span>
+            </div>
             Projects
           </div>
           </Link>
 
           <Link to="/articles">
           <div className={styles.headerelement}>
-            <div className={styles.icons}><span className="material-icons">article</span></div>
+            <div className={styles.icons}>
+              <span className="material-icons">article</span>
+            </div>
             Articles
           </div>
           </Link>
 
           <Link to="/links">
           <div className={styles.headerelement}>
-            <div className={styles.icons}><span className="material-icons">link</span></div>
+            <div className={styles.icons}>
+              <span className="material-icons">link</span>
+            </div>
             Links
           </div>
           </Link>
