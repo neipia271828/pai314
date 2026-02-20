@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Project internal docs
+CHANGESUMMARY/
+docs/
+CLAUDE.md
