@@ -8,8 +8,10 @@ function Home() {
         <>
             <Header currentPage="Pai314" transparent />
             <MonteCarloPi />
-            <Me />
-            <Link />
+            <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                <Me />
+                <Link />
+            </section>
         </>
     )
 }

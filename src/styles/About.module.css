@@ -1,0 +1,87 @@
+.meSection {
+    color: gray;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background-color : white;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flow-root;
+}
+
+.careerSection {
+    /* 画面左端に寄せる */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    text-align: left;
+    margin-top : 5%;
+    padding-left: 0.5%;
+}
+
+.sectionHead {
+    text-align: left;
+    width : 100vw;
+    padding:0.5vw;
+    padding-left:1vw;
+    margin-left: calc(50% - 50vw);
+    background-color : #2F2F2F;
+}
+
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.8rem;
+    position: relative;
+    font-size: 18px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.6rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #555;
+}
+
+.timelineItem {
+    position: relative;
+    padding: 0.5rem 0 0.9rem 0.5rem;
+}
+
+.timelineItem::before {
+    content: "";
+    position: absolute;
+    left: -0.1rem;
+    top: 0.75rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background-color: #7a7cff;
+}
+
+.timelineYear {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.timelineDetails {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 0.8rem;
+}
+
+.timelineDetails > li {
+    position: relative;
+    margin: 0.35rem 0;
+}
+
+.timelineDetails > li::before {
+    content: "";
+    position: absolute;
+    left: -0.8rem;
+    top: 0.7em;
+    width: 0.6rem;
+    border-top: 2px solid #666;
+}
