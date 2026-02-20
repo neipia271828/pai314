@@ -24,6 +24,5 @@ dist-ssr
 *.sw?
 
 # Project internal docs
-CHANGESUMMARY/
 docs/
 CLAUDE.md
