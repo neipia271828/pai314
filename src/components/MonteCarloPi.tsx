@@ -12,7 +12,8 @@ type Point = {
 const POINT_LIFETIME_MS = 3140
 const ACCENT_COLOR = "#4CBCC6"
 const GRID_SIZE = 20
-const POINTS_PER_CLICK = 250
+const SAND_DURATION_MS = 500
+const POINTS_PER_FRAME = 24
 
 function drawGrid(ctx: CanvasRenderingContext2D, width: number, height: number) {
   ctx.strokeStyle = "#1a1a2e"
@@ -138,23 +139,46 @@ function MonteCarloPi() {
     return () => cancelAnimationFrame(animFrameRef.current)
   }, [render])
 
-  const handleClick = useCallback(() => {
+  const sandTimerRef = useRef<number>(0)
+  const sandStartRef = useRef<number>(0)
+
+  const updateEstimate = useCallback(() => {
+    const { radius } = getCircleParams()
+    const w = canvasWidthRef.current
+    const h = canvasHeightRef.current
+    const activePoints = pointsRef.current
+    const inside = activePoints.filter((p) => p.insideCircle).length
+    const total = activePoints.length
+    const canvasArea = w * h
+    const estimate = total > 0 ? (inside / total) * (canvasArea / (radius * radius)) : null
+    setPiEstimate(estimate)
+    setTotalPoints(total)
+    setInsidePoints(inside)
+  }, [getCircleParams])
+
+  const sandStep = useCallback(() => {
+    const elapsed = Date.now() - sandStartRef.current
+    if (elapsed >= SAND_DURATION_MS) {
+      cancelAnimationFrame(sandTimerRef.current)
+      sandTimerRef.current = 0
+      return
+    }
+
     const { cx, cy, radius } = getCircleParams()
     const w = canvasWidthRef.current
     const h = canvasHeightRef.current
     const now = Date.now()
-    const newPoints: Point[] = []
 
-    for (let i = 0; i < POINTS_PER_CLICK; i++) {
-      // Distribute uniformly across entire canvas
+    const progress = elapsed / SAND_DURATION_MS
+    const pointsThisFrame = Math.max(1, Math.floor(POINTS_PER_FRAME * (1 - progress) ** 2))
+
+    for (let i = 0; i < pointsThisFrame; i++) {
       const x = Math.random() * w
       const y = Math.random() * h
-
       const dx = x - cx
       const dy = y - cy
       const insideCircle = dx * dx + dy * dy <= radius * radius
-
-      newPoints.push({
+      pointsRef.current.push({
         x,
         y,
         insideCircle,
@@ -163,20 +187,25 @@ function MonteCarloPi() {
       })
     }
 
-    pointsRef.current = [...pointsRef.current, ...newPoints]
+    updateEstimate()
+    sandTimerRef.current = requestAnimationFrame(sandStep)
+  }, [getCircleParams, updateEstimate])
 
-    const activePoints = pointsRef.current
-    const inside = activePoints.filter((p) => p.insideCircle).length
-    const total = activePoints.length
-    // π ≈ (inside / total) × (canvasArea / r²)
-    // derived from: circleArea = π × r², ratio = inside/total = circleArea/canvasArea
-    const canvasArea = w * h
-    const estimate = total > 0 ? (inside / total) * (canvasArea / (radius * radius)) : null
+  const handleClick = useCallback(() => {
+    if (sandTimerRef.current) {
+      cancelAnimationFrame(sandTimerRef.current)
+    }
+    sandStartRef.current = Date.now()
+    sandTimerRef.current = requestAnimationFrame(sandStep)
+  }, [sandStep])
 
-    setPiEstimate(estimate)
-    setTotalPoints(total)
-    setInsidePoints(inside)
-  }, [getCircleParams])
+  useEffect(() => {
+    return () => {
+      if (sandTimerRef.current) {
+        cancelAnimationFrame(sandTimerRef.current)
+      }
+    }
+  }, [])
 
   const accuracy =
     piEstimate !== null
