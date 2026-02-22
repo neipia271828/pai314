@@ -52,6 +52,7 @@ function MonteCarloPi() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pointsRef = useRef<Point[]>([])
   const animFrameRef = useRef<number>(0)
+  const renderRef = useRef<() => void>(() => {})
   const nextIdRef = useRef(0)
   const canvasWidthRef = useRef(800)
   const canvasHeightRef = useRef(window.innerHeight)
@@ -98,7 +99,7 @@ function MonteCarloPi() {
       drawPoint(ctx, point, alpha)
     }
 
-    animFrameRef.current = requestAnimationFrame(render)
+    animFrameRef.current = requestAnimationFrame(() => renderRef.current())
   }, [getCircleParams])
 
   // Resize observer on canvas element directly so contentRect reflects
@@ -135,12 +136,17 @@ function MonteCarloPi() {
   }, [])
 
   useEffect(() => {
-    animFrameRef.current = requestAnimationFrame(render)
-    return () => cancelAnimationFrame(animFrameRef.current)
+    renderRef.current = render
   }, [render])
+
+  useEffect(() => {
+    animFrameRef.current = requestAnimationFrame(() => renderRef.current())
+    return () => cancelAnimationFrame(animFrameRef.current)
+  }, [])
 
   const sandTimerRef = useRef<number>(0)
   const sandStartRef = useRef<number>(0)
+  const sandStepRef = useRef<() => void>(() => {})
 
   const updateEstimate = useCallback(() => {
     const { radius } = getCircleParams()
@@ -188,16 +194,20 @@ function MonteCarloPi() {
     }
 
     updateEstimate()
-    sandTimerRef.current = requestAnimationFrame(sandStep)
+    sandTimerRef.current = requestAnimationFrame(() => sandStepRef.current())
   }, [getCircleParams, updateEstimate])
+
+  useEffect(() => {
+    sandStepRef.current = sandStep
+  }, [sandStep])
 
   const handleClick = useCallback(() => {
     if (sandTimerRef.current) {
       cancelAnimationFrame(sandTimerRef.current)
     }
     sandStartRef.current = Date.now()
-    sandTimerRef.current = requestAnimationFrame(sandStep)
-  }, [sandStep])
+    sandTimerRef.current = requestAnimationFrame(() => sandStepRef.current())
+  }, [])
 
   useEffect(() => {
     return () => {
@@ -216,8 +226,6 @@ function MonteCarloPi() {
     <div className={styles.wrapper}>
       <canvas
         ref={canvasRef}
-        width={canvasWidthRef.current}
-        height={canvasHeightRef.current}
         className={styles.canvas}
         onClick={handleClick}
       />

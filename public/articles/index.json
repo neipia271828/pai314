@@ -1,5 +1,16 @@
 [
   {
+    "id": "26-02-22-0",
+    "title": "Codex CLIでmulti-agent運用を始める実践ガイド",
+    "date": "2026-02-22T00:00:00.000Z",
+    "summary": "Codex CLIを使って、調査・実装・レビューを並列化するmulti-agent運用の基本手順と実践ポイントを解説します。",
+    "tags": [
+      "codex-cli",
+      "multi-agent",
+      "workflow"
+    ]
+  },
+  {
     "id": "25-12-20-1",
     "title": "about me",
     "date": "2025-12-20T00:00:00.000Z",

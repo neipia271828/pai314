@@ -1,8 +1,8 @@
 .card {
     display: block;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #e5e5e5;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-default);
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -10,19 +10,19 @@
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .card h3 {
-    margin: 0 0 8px;
+    margin: 0 0 var(--space-2);
 }
 
 .card time {
-    font-size: 0.85rem;
-    color: #666;
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
 }
 
 .card p {
-    margin-top: 8px;
-    color: #444;
+    margin-top: var(--space-2);
+    color: var(--text-secondary);
 }

@@ -1,10 +1,10 @@
 .meSection {
-    color: gray;
+    color: var(--text-secondary);
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    background-color : white;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    background-color: var(--bg-surface);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
     display: flow-root;
 }
 
@@ -13,17 +13,17 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     text-align: left;
-    margin-top : 5%;
+    margin-top: 5%;
     padding-left: 0.5%;
 }
 
 .sectionHead {
     text-align: left;
-    width : 100vw;
-    padding:0.5vw;
-    padding-left:1vw;
+    width: 100vw;
+    padding: 0.5vw;
+    padding-left: 1vw;
     margin-left: calc(50% - 50vw);
-    background-color : #2F2F2F;
+    background-color: var(--bg-elevated);
 }
 
 .timeline {
@@ -31,7 +31,7 @@
     margin: 0;
     padding: 0 0 0 1.8rem;
     position: relative;
-    font-size: 18px;
+    font-size: var(--text-lg);
 }
 
 .timeline::before {
@@ -41,7 +41,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background-color: #555;
+    background-color: var(--border-default);
 }
 
 .timelineItem {
@@ -56,14 +56,14 @@
     top: 0.75rem;
     width: 0.7rem;
     height: 0.7rem;
-    border-radius: 50%;
-    background-color: #7a7cff;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary-400);
 }
 
 .timelineYear {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-1);
 }
 
 .timelineDetails {
@@ -83,5 +83,5 @@
     left: -0.8rem;
     top: 0.7em;
     width: 0.6rem;
-    border-top: 2px solid #666;
+    border-top: 2px solid var(--border-default);
 }
